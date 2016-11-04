@@ -16,6 +16,22 @@ Acesso ao conteúdo de grandes arquivos por meio de buffers.
  <br />Fábio Nogueira de Lucena - Fábrica de Software - 
  Instituto de Informática (UFG).
 
+## Caso de uso
+Alguns arquivos podem atingir dezenas, centenas de
+megabytes, ou ainda mais. Dependendo do uso que se faz da informação
+armazenada em "grandes" arquivos, a estratégia pode ser tão simples
+quanto ler trechos sequenciais até que todo o arquivo seja percorrido.
+Em outros casos, quando o acesso não possui uma ordem
+de acesso que pode ser prevista, ou quando vários 
+clientes concorrentes, mesmo que exclusivamente para leitura, requisitam
+acesso ao conteúdo desse arquivo, a estratégia "simples" não é mais 
+uma solução razoável. 
+
+Esse componente de software tem como propósito gerir o acesso ao
+conteúdo de arquivos que podem conter centenas de gigabytes de 
+dados, consumidos de forma concorrente por vários clientes.
+
+
 ## Como usar (via maven)?
 
 Acrescente a dependência no arquivo pom.xml:
