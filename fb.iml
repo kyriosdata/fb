@@ -65,6 +65,5 @@
     <orderEntry type="library" name="Maven: org.apache.maven.surefire:surefire-api:2.19.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-toolchain:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugin-tools:maven-plugin-annotations:3.3" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.7" level="project" />
   </component>
 </module>
