@@ -22,30 +22,57 @@ import java.nio.ByteBuffer;
  */
 public class FileBuffer {
 
-    private File _file;
+    /**
+     * Assegura acesso randômico ao arquivo.
+     * Utilizado para transferir dados de
+     * segmentos para o buffer.
+     */
     private RandomAccessFile raf;
-    private int _bufferSize;
-    private byte[] _buffer;
+
+    /**
+     * Garante acesso rápido ao tamanho do buffer.
+     */
+    private int bufferSize;
+
+    /**
+     * Buffer propriamente dito para o qual
+     * segmentos do arquivo serão transferidos.
+     */
+    private byte[] buffer;
+
+    /**
+     * Indica segmento corrente do arquivo que está
+     * disponível no buffer.
+     */
     private int segmentoCorrente;
+
+    /**
+     * ByteBuffer que "embrulha" o buffer, que é
+     * constantemente atualizado sob demanda.
+     */
     private ByteBuffer bb;
+
+    /**
+     * Tamanho do arquivo cujo acesso de leitura
+     * é requisitado.
+     */
     private long tamanhoArquivo;
 
     /**
      * Cria buffer para acesso ao arquivo.
      *
      * @param file       O arquivo a ser aberto para leitura.
-     * @param bufferSize O tamanho do buffer.
+     * @param bufferSizeInBytes O tamanho do buffer em bytes.
      */
-    public FileBuffer(File file, int bufferSize) {
+    public FileBuffer(File file, int bufferSizeInBytes) {
 
-        _file = file;
-        _bufferSize = bufferSize;
+        bufferSize = bufferSizeInBytes;
 
         try {
-            tamanhoArquivo = _file.length();
+            tamanhoArquivo = file.length();
             raf = new RandomAccessFile(file, "r");
-            _buffer = new byte[_bufferSize];
-            bb = ByteBuffer.wrap(_buffer);
+            buffer = new byte[this.bufferSize];
+            bb = ByteBuffer.wrap(buffer);
         } catch (FileNotFoundException e) {
             throw new RuntimeException("FileBuffer construtor");
         }
@@ -74,16 +101,16 @@ public class FileBuffer {
     public void carregaSegmento(int segmento) {
         try {
             // Posição inicial de leitura
-            int inicio = segmento * _bufferSize;
+            int inicio = segmento * bufferSize;
 
             // Bytes disponíveis no arquivo a partir da posição inicial
             long restantes = tamanhoArquivo - inicio;
 
             // Última posição possível de ser carregada
-            int fim = restantes >= _bufferSize ? _bufferSize : (int)restantes;
+            int fim = restantes >= bufferSize ? bufferSize : (int)restantes;
 
             raf.seek(inicio);
-            raf.readFully(_buffer, 0, fim);
+            raf.readFully(buffer, 0, fim);
         } catch (IOException e) {
             throw new RuntimeException("FileBuffer.carregaSegmento()");
         }
@@ -101,11 +128,11 @@ public class FileBuffer {
      * para a posição indicada.
      */
     public int offset(long posicao) {
-        long segmento = posicao / _bufferSize;
+        long segmento = posicao / bufferSize;
         if (segmento != segmentoCorrente) {
             carregaSegmento((int)segmento);
         }
 
-        return (int) (posicao % _bufferSize);
+        return (int) (posicao % bufferSize);
     }
 }
