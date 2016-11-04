@@ -24,17 +24,17 @@ public class FileBuffer {
 
     private File _file;
     private RandomAccessFile raf;
-    private int _bufferSize;              // long because it's used in long expressions
+    private int _bufferSize;
     private byte[] _buffer;
     private int segmentoCorrente;
     private ByteBuffer bb;
     private long tamanhoArquivo;
 
     /**
-     * Cria offset para acesso ao arquivo.
+     * Cria buffer para acesso ao arquivo.
      *
      * @param file       O arquivo a ser aberto para leitura.
-     * @param bufferSize O tamanho do offset.
+     * @param bufferSize O tamanho do buffer.
      */
     public FileBuffer(File file, int bufferSize) {
 
@@ -54,6 +54,12 @@ public class FileBuffer {
         segmentoCorrente = -1;
     }
 
+    /**
+     * Recupera buffer (como {@link ByteBuffer}).
+     *
+     * @return O {@link ByteBuffer} que está baseado
+     * no buffer corrente.
+     */
     public ByteBuffer getByteBuffer() {
         return bb;
     }
