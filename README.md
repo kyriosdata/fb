@@ -1,10 +1,10 @@
 # fb (file buffer)
 Acesso ao conteúdo de grandes arquivos por meio de buffers. 
 
-[<img src="https://api.travis-ci.org/kyriosdata/seed.svg?branch=master">](https://travis-ci.org/kyriosdata/seed)
-[![Dependency Status](https://www.versioneye.com/user/projects/5819f7b2afb6141c5571026c/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5819f7b2afb6141c5571026c)
-[![Sonarqube](https://sonarqube.com/api/badges/gate?key=com.github.kyriosdata.seed:seed)](https://sonarqube.com/dashboard/index?id=com.github.kyriosdata.seed%3Aseed)
-[![Javadocs](http://javadoc.io/badge/com.github.kyriosdata.seed/seed.svg)](http://javadoc.io/doc/com.github.kyriosdata.seed/seed)
+[<img src="https://api.travis-ci.org/kyriosdata/fb.svg?branch=master">](https://travis-ci.org/kyriosdata/fb)
+[![Dependency Status](https://www.versioneye.com/user/projects/581bd12dafb6141c1c4bf023/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/581bd12dafb6141c1c4bf023)
+[![Sonarqube](https://sonarqube.com/api/badges/gate?key=com.github.kyriosdata.fb:fb)](https://sonarqube.com/dashboard/index?id=com.github.kyriosdata.fb%3Afb)
+[![Javadocs](http://javadoc.io/badge/com.github.kyriosdata.fb/fb.svg)](http://javadoc.io/doc/com.github.kyriosdata.fb/fb)
 
 <br />
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
