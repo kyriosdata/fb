@@ -68,7 +68,7 @@ public class FileBuffer {
      * Carrega o segmento indicado.
      *
      * @param segmento Segmento do arquivo a ser carregado no offset.
-     * @throws IOException Se a operação não pode ser realizada de
+     * @throws RuntimeException Se a operação não pode ser realizada de
      * forma satisfatória.
      */
     public void carregaSegmento(int segmento) {
